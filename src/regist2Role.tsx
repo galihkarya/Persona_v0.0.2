@@ -1,15 +1,16 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-} from 'react-native';
-import { Dropdown } from 'react-native-element-dropdown';
+import React, {useRef, useState} from 'react';
+import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 
+import {Dropdown, IDropdownRef} from 'react-native-element-dropdown';
 
 const RegistRole = ({navigation}) => {
+  const [value, setValue] = useState<string>();
+  const ref = useRef<IDropdownRef>(null);
+  const data = [
+    {label: 'Guru BK', value: 'bk'},
+    {label: 'Wali Kelas/lainnya', value: 'wk'},
+  ];
+
   return (
     <View>
       <TouchableOpacity
@@ -32,11 +33,25 @@ const RegistRole = ({navigation}) => {
         <Text style={Styles.head2}>Tentukan role anda di bawah ini</Text>
       </View>
       <View style={{margin: 20}}>
-
+        <Dropdown
+          ref={ref}
+          style={Styles.dropdown}
+          placeholderStyle={Styles.placeholderStyle}
+          selectedTextStyle={Styles.selectedTextStyle}
+          data={data}
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder="Pilih role"
+          value={value}
+          onChange={item => {
+            setValue(item.value);
+          }}
+        />
         <TouchableOpacity
           style={Styles.button}
           onPress={() => {
-            navigation.navigate('RegistRole');
+            navigation.navigate('RegistInstitutionBK');
           }}>
           <Text style={Styles.textButton}>lanjut ...</Text>
         </TouchableOpacity>
@@ -78,7 +93,7 @@ const Styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#CC3663',
-    marginVertical: 25,
+    marginVertical: 20,
     verticalAlign: 'bottom',
     borderRadius: 15,
   },
@@ -86,6 +101,21 @@ const Styles = StyleSheet.create({
     textAlign: 'center',
     color: '#FFFFFF',
     paddingVertical: 15,
+    fontSize: 16,
+  },
+  dropdown: {
+    marginVertical: 10,
+    height: 50,
+    elevation: 8,
+    shadowColor: '#00000050',
+    backgroundColor: '#fefefe',
+    paddingHorizontal: 20,
+    borderRadius: 15,
+  },
+  placeholderStyle: {
+    fontSize: 16,
+  },
+  selectedTextStyle: {
     fontSize: 16,
   },
 });
