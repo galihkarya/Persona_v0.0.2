@@ -10,6 +10,12 @@ import {
 
 const HomePage = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [currentModal, setCurrentModal] = useState(2);
+
+  const setModalContent = (modalHome: number) => {
+    setModalVisible(true);
+    setCurrentModal(modalHome);
+  };
 
   const Card1 = () => {
     return (
@@ -94,13 +100,19 @@ const HomePage = ({navigation}) => {
         onRequestClose={() => {
           setModalVisible(!modalVisible);
         }}>
-        <Card1 />
+        {currentModal == 1 ? (
+          <Card1 />
+        ) : currentModal == 2 ? (
+          <Card2 />
+        ) : (
+          <Card3 />
+        )}
       </Modal>
 
       <View style={{marginTop: 20}}>
         <TouchableOpacity
           style={Styles.card}
-          onPress={() => setModalVisible(true)}>
+          onPress={() => setModalContent(1)}>
           <Image
             style={Styles.imageObjects}
             source={require('../assets/icons/palm_fluent.png')}
@@ -109,7 +121,7 @@ const HomePage = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={Styles.card}
-          onPress={() => setModalVisible(true)}>
+          onPress={() => setModalContent(2)}>
           <Image
             style={Styles.imageObjects}
             source={require('../assets/icons/palmline.png')}
@@ -118,7 +130,7 @@ const HomePage = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={Styles.card}
-          onPress={() => setModalVisible(true)}>
+          onPress={() => setModalContent(3)}>
           <Image
             style={Styles.imageObjects}
             source={require('../assets/icons/indexfinger_fluent.png')}
