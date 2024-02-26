@@ -13,9 +13,10 @@ import {
   RegistInstitutionBK,
   RegistInstitutionWK,
   RegistAccount,
+  AddStudentDataPage
 } from '..';
 
-
+import Tabs from './bottomBarNavigaton';
 
 const Stack = createNativeStackNavigator();
 
@@ -77,6 +78,12 @@ function Navigation() {
         component={RegistAccount}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+      name="addStudentData"
+      component={AddStudentDataPage}
+      options={{headerShown: false}}
+      />
+      <Stack.Screen name="BottomNav" component={Tabs} options={{headerShown: false}}/>
     </Stack.Navigator>
   );
 }

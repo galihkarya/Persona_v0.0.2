@@ -42,7 +42,7 @@ const LoginPage = ({navigation}) => {
           placeholder="password"
         />
         <TouchableOpacity style={Styles.button}>
-          <Text style={Styles.textButton}>Masuk</Text>
+          <Text style={Styles.textButton} onPress={() => {navigation.navigate('BottomNav')}}>Masuk</Text>
         </TouchableOpacity>
         <View style={{flexDirection: 'row', alignSelf: 'center'}}>
           <Text>Belum punya akun? </Text>

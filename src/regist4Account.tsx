@@ -38,7 +38,7 @@ const RegistAccount = ({navigation}) => {
         <TouchableOpacity
           style={Styles.button}
           onPress={() => {
-            navigation.navigate('HomePageLogedIn');
+            navigation.replace('BottomNav');
           }}>
           <Text style={Styles.textButton}>lanjut ...</Text>
         </TouchableOpacity>
