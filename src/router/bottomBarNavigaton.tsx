@@ -7,6 +7,13 @@ import {View, Image} from 'react-native';
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
+  let HomeSelectedIcon = require('../../assets/icons/icon_Home_selected.png');
+  let HomeUnselectedIcon = require('../../assets/icons/icon_Home.png');
+  let GroupSelectedIcon = require('../../assets/icons/icon_Group_selected.png');
+  let GroupUnselectedIcon = require('../../assets/icons/icon_Group.png');
+  let ProfileSelectedIcon = require('../../assets/icons/icon_Profile_selected.png');
+  let ProfileUnselectedIcon = require('../../assets/icons/icon_Profile.png');
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -26,8 +33,8 @@ const Tabs = () => {
           tabBarIcon: ({focused}) => (
             <View>
               <Image
-                source={require('../../assets/icons/icon_Home_selected.png')}
-                style={{width: 30, height: 30, opacity: focused ? 1 : 0.3}}
+                source={focused ? HomeSelectedIcon : HomeUnselectedIcon}
+                style={{width: 30, height: 30}}
               />
             </View>
           ),
@@ -40,8 +47,8 @@ const Tabs = () => {
           tabBarIcon: ({focused}) => (
             <View>
               <Image
-                source={require('../../assets/icons/icon_Group_selected.png')}
-                style={{width: 30, height: 30, opacity: focused ? 1 : 0.3}}
+                source={focused ? GroupSelectedIcon : GroupUnselectedIcon}
+                style={{width: 30, height: 30}}
               />
             </View>
           ),
@@ -54,8 +61,8 @@ const Tabs = () => {
           tabBarIcon: ({focused}) => (
             <View>
               <Image
-                source={require('../../assets/icons/icon_Profile_selected.png')}
-                style={{width: 30, height: 30, opacity: focused ? 1 : 0.3}}
+                source={focused ? ProfileSelectedIcon : ProfileUnselectedIcon}
+                style={{width: 30, height: 30}}
               />
             </View>
           ),

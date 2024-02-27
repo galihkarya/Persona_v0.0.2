@@ -110,7 +110,7 @@ const Styles = StyleSheet.create({
     shadowColor: '#00000050',
     backgroundColor: '#fefefe',
     paddingHorizontal: 20,
-    borderRadius: 15,
+    borderRadius: 10,
   },
   placeholderStyle: {
     fontSize: 16,
