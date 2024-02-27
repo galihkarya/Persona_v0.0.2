@@ -40,7 +40,7 @@ const RegistAccount = ({navigation}) => {
           onPress={() => {
             navigation.replace('BottomNav');
           }}>
-          <Text style={Styles.textButton}>lanjut ...</Text>
+          <Text style={Styles.textButton}>Daftar</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
