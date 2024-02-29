@@ -9,8 +9,8 @@ const Tab = createBottomTabNavigator();
 const Tabs = () => {
   let HomeSelectedIcon = require('../../assets/icons/icon_Home_selected.png');
   let HomeUnselectedIcon = require('../../assets/icons/icon_Home.png');
-  let GroupSelectedIcon = require('../../assets/icons/icon_Group_selected.png');
-  let GroupUnselectedIcon = require('../../assets/icons/icon_Group.png');
+  let ResultSelectedIcon = require('../../assets/icons/icon_Result_selected.png');
+  let ResultUnselectedIcon = require('../../assets/icons/icon_Result.png');
   let ProfileSelectedIcon = require('../../assets/icons/icon_Profile_selected.png');
   let ProfileUnselectedIcon = require('../../assets/icons/icon_Profile.png');
 
@@ -47,7 +47,7 @@ const Tabs = () => {
           tabBarIcon: ({focused}) => (
             <View>
               <Image
-                source={focused ? GroupSelectedIcon : GroupUnselectedIcon}
+                source={focused ? ResultSelectedIcon : ResultUnselectedIcon}
                 style={{width: 30, height: 30}}
               />
             </View>
