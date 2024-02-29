@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomePageLogedIn from '../logedIn/homePageLogedIn';
-import GroupListPage from '../logedIn/groupListPage';
+import ResultListPage from '../logedIn/resultListPage';
 import ProfilePage from '../logedIn/profilePage';
 import {View, Image} from 'react-native';
 
@@ -41,8 +41,8 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="Group"
-        component={GroupListPage}
+        name="ResultList"
+        component={ResultListPage}
         options={{
           tabBarIcon: ({focused}) => (
             <View>

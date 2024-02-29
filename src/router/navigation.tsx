@@ -39,18 +39,8 @@ function Navigation() {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="HomePageLogedIn"
-        component={HomePageLogedIn}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
         name="GroupListPage"
         component={GroupListPage}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ProfilePage"
-        component={ProfilePage}
         options={{headerShown: false}}
       />
       <Stack.Screen
