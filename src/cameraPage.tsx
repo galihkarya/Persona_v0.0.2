@@ -1,10 +1,12 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, Image, StyleSheet, StatusBar} from 'react-native';
 
 const CameraPage = ({navigation}) => {
+
   return (
     <View style={{backgroundColor: 'black', flex: 1}}>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <StatusBar hidden={true} />
+      <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 20}}>
         <TouchableOpacity
           style={Styles.backButton}
           hitSlop={{top: 5, bottom: 5, right: 5, left: 5}}
@@ -16,13 +18,9 @@ const CameraPage = ({navigation}) => {
             source={require('../assets/icons/icon_arrowLeftCircled.png')}
           />
         </TouchableOpacity>
-        <View>
-          <Text style={Styles.instruction}>Posisikan Tangan Kamu</Text>
-        </View>
+        <Text style={Styles.instruction}>Posisikan Tangan Kamu</Text>
       </View>
-      <View style={Styles.viewFinder}>
-
-      </View>
+      <View style={Styles.viewFinder}></View>
       <TouchableOpacity style={Styles.shutterButton}></TouchableOpacity>
     </View>
   );
@@ -34,7 +32,6 @@ const Styles = StyleSheet.create({
     height: 30,
   },
   backButton: {
-    alignSelf: 'flex-start',
     marginHorizontal: 20,
     marginVertical: 30,
   },
@@ -56,13 +53,12 @@ const Styles = StyleSheet.create({
     borderWidth: 5,
     backgroundColor: '#fefefe',
     alignSelf: 'center',
-    margin: 30
+    margin: 30,
   },
   viewFinder: {
     backgroundColor: '#00b140',
-    aspectRatio: 3/4,
-    
-  }
+    aspectRatio: 3 / 4,
+  },
 });
 
 export default CameraPage;

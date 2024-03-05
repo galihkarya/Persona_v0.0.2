@@ -1,9 +1,18 @@
 import React, {useRef, useState} from 'react';
-import {View, Text, StyleSheet, TextInput, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  StatusBar,
+} from 'react-native';
 
 import {Dropdown, IDropdownRef} from 'react-native-element-dropdown';
 
-const ResultListPage = () => {
+const ResultListPage = ({navigation}) => {
   let institutionname: string;
   let institutioncode: string;
 
@@ -35,7 +44,8 @@ const ResultListPage = () => {
 
   return (
     <View>
-      <Text style={Styles.header}>Daftar Hasil</Text>
+      <StatusBar backgroundColor="#f2f2f2" barStyle="dark-content" />
+      <Text style={Styles.headerText}>Daftar Hasil</Text>
       <View style={{margin: 20}}>
         <Text style={Styles.schoolName}>{institutionname}</Text>
         <Text style={Styles.schoolCode}>Kode instansi: {institutioncode}</Text>
@@ -46,7 +56,7 @@ const ResultListPage = () => {
           />
           <TextInput placeholder="Cari" inputMode="search" />
         </View>
-        <View style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
+        <View style={{flexDirection: 'row', gap: 10, alignItems: 'center'}}>
           <Dropdown
             ref={ref}
             style={Styles.dropdown}
@@ -62,20 +72,29 @@ const ResultListPage = () => {
               setValue(item.value);
             }}
           />
-          <TouchableOpacity style={{backgroundColor: '#e9e9e9', padding: 12.5, borderRadius: 15}}>
-            <Image source={require('../../assets/icons/icon_edit.png')} style={{width: 25, height: 25}}/>
+          <TouchableOpacity
+            style={{
+              backgroundColor: '#e9e9e9',
+              padding: 12.5,
+              borderRadius: 15,
+            }}
+            onPress={() => {
+              navigation.navigate('GroupListPage');
+            }}>
+            <Image
+              source={require('../../assets/icons/icon_edit.png')}
+              style={{width: 25, height: 25}}
+            />
           </TouchableOpacity>
         </View>
-        <ScrollView>
-            
-        </ScrollView>
+        <ScrollView></ScrollView>
       </View>
     </View>
   );
 };
 
 const Styles = StyleSheet.create({
-  header: {
+  headerText: {
     fontSize: 20,
     fontWeight: '700',
     color: 'black',
@@ -111,7 +130,7 @@ const Styles = StyleSheet.create({
     backgroundColor: '#e9e9e9',
     paddingHorizontal: 20,
     borderRadius: 15,
-    flex: 1
+    flex: 1,
   },
   placeholderStyle: {
     fontSize: 15,
