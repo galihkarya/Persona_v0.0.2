@@ -1,23 +1,35 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image, StyleSheet, StatusBar} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  StatusBar,
+} from 'react-native';
 
 const CameraPage = ({navigation}) => {
-
   return (
-    <View style={{backgroundColor: 'black', flex: 1}}>
-      <StatusBar hidden={true} />
-      <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 20}}>
-        <TouchableOpacity
-          style={Styles.backButton}
-          hitSlop={{top: 5, bottom: 5, right: 5, left: 5}}
-          onPress={() => {
-            navigation.goBack();
-          }}>
-          <Image
-            style={Styles.backIcon}
-            source={require('../assets/icons/icon_arrowLeftCircled.png')}
-          />
-        </TouchableOpacity>
+    <View style={{flex: 1, backgroundColor: 'black'}}>
+      <StatusBar barStyle={'light-content'} backgroundColor={'#000000'} />
+      <View style={{position: 'absolute', width: '100%', height: '100%', zIndex: 2, justifyContent: 'center'}}>
+        <View style={Styles.guideline} />
+      </View>
+      <TouchableOpacity
+        style={Styles.backButton}
+        hitSlop={{top: 5, bottom: 5, right: 5, left: 5}}
+        onPress={() => {
+          navigation.goBack();
+        }}>
+        <Image
+          style={Styles.backIcon}
+          source={require('../assets/icons/icon_arrowLeftCircled.png')}
+        />
+      </TouchableOpacity>
+      <View
+        style={{
+          alignItems: 'center',
+        }}>
         <Text style={Styles.instruction}>Posisikan Tangan Kamu</Text>
       </View>
       <View style={Styles.viewFinder}></View>
@@ -32,18 +44,22 @@ const Styles = StyleSheet.create({
     height: 30,
   },
   backButton: {
-    marginHorizontal: 20,
-    marginVertical: 30,
+    position: 'absolute',
+    top: 30,
+    left: 20,
+    zIndex: 5,
   },
   instruction: {
     color: '#cc3663',
     backgroundColor: '#fefefe',
-    alignSelf: 'center',
+    textAlign: 'center',
+    justifyContent: 'center',
     paddingVertical: 10,
     paddingHorizontal: 20,
     fontWeight: '700',
     fontSize: 20,
     borderRadius: 30,
+    marginVertical: 20,
   },
   shutterButton: {
     height: 80,
@@ -53,11 +69,23 @@ const Styles = StyleSheet.create({
     borderWidth: 5,
     backgroundColor: '#fefefe',
     alignSelf: 'center',
-    margin: 30,
+    position: 'absolute',
+    bottom: 50,
+    zIndex: 4,
   },
   viewFinder: {
     backgroundColor: '#00b140',
     aspectRatio: 3 / 4,
+  },
+  guideline: {
+    // position: 'absolute',
+    zIndex: 3,
+    backgroundColor: '#abcdef',
+    width: 200,
+    height: 200,
+
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
 });
 
