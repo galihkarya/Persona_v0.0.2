@@ -12,9 +12,6 @@ const CameraPage = ({navigation}) => {
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
       <StatusBar barStyle={'light-content'} backgroundColor={'#000000'} />
-      <View style={{position: 'absolute', width: '100%', height: '100%', zIndex: 2, justifyContent: 'center'}}>
-        <View style={Styles.guideline} />
-      </View>
       <TouchableOpacity
         style={Styles.backButton}
         hitSlop={{top: 5, bottom: 5, right: 5, left: 5}}
@@ -32,7 +29,10 @@ const CameraPage = ({navigation}) => {
         }}>
         <Text style={Styles.instruction}>Posisikan Tangan Kamu</Text>
       </View>
-      <View style={Styles.viewFinder}></View>
+      <View style={Styles.viewFinder}>
+        <View style={Styles.guideline} />
+
+      </View>
       <TouchableOpacity style={Styles.shutterButton}></TouchableOpacity>
     </View>
   );
@@ -76,16 +76,16 @@ const Styles = StyleSheet.create({
   viewFinder: {
     backgroundColor: '#00b140',
     aspectRatio: 3 / 4,
+    justifyContent: 'center', 
   },
   guideline: {
-    // position: 'absolute',
     zIndex: 3,
-    backgroundColor: '#abcdef',
-    width: 200,
-    height: 200,
-
-    justifyContent: 'center',
+    width: 250,
+    height: 250,
     alignSelf: 'center',
+    borderColor: '#cc3663', 
+    borderWidth: 5,
+    opacity: 0.7
   },
 });
 
