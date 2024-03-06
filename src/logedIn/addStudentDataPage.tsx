@@ -114,6 +114,7 @@ const Styles = StyleSheet.create({
     fontWeight: '300',
     marginTop: '15%',
     marginBottom: '20%',
+    fontSize: 16, 
   },
   genderImage: {
     width: 115,
