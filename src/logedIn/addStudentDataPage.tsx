@@ -10,10 +10,10 @@ import {
 import {Dropdown, IDropdownRef} from 'react-native-element-dropdown';
 
 const AddStudentDataPage = ({navigation}) => {
-  const [selectedOption, setSelectedOption] = useState<string>();
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleRadioButtonPress = (option: string) => {
-    setSelectedOption(option);
+    setSelectedOption(option === selectedOption ? null : option);
   };
 
   const [value, setValue] = useState<string>();
@@ -52,21 +52,27 @@ const AddStudentDataPage = ({navigation}) => {
           source={require('../../assets/icons/icon_arrowLeft.png')}
         />
       </TouchableOpacity>
-      <Text style={Styles.instructionText}>Masukkan data diri kamu</Text>
+      <Text style={Styles.instructionText}>Masukkan data diri</Text>
       <View style={Styles.radioImage}>
-        <TouchableOpacity style={Styles.radioButtons}>
+        <TouchableOpacity
+          style={[
+            Styles.radioButtons,
+            {opacity: selectedOption === 'Laki-laki' ? 1 : 0.3},
+          ]}
+          onPress={() => handleRadioButtonPress('Laki-laki')}
+          activeOpacity={1}>
           <Text style={Styles.genderText}>Laki-laki</Text>
-          <Image
-            style={Styles.genderImage}
-            source={require('../../assets/icons/boy.png')}
-          />
+          <Image style={Styles.genderImage} source={require('../../assets/icons/boy.png')} />
         </TouchableOpacity>
-        <TouchableOpacity style={Styles.radioButtons}>
+        <TouchableOpacity
+          style={[
+            Styles.radioButtons,
+            {opacity: selectedOption === 'Perempuan' ? 1 : 0.3},
+          ]}
+          onPress={() => handleRadioButtonPress('Perempuan')}
+          activeOpacity={1}>
           <Text style={Styles.genderText}>Perempuan</Text>
-          <Image
-            style={Styles.genderImage}
-            source={require('../../assets/icons/girl.png')}
-          />
+          <Image style={Styles.genderImage} source={require('../../assets/icons/girl.png')} />
         </TouchableOpacity>
       </View>
       <View style={{margin: 20, rowGap: 20}}>
@@ -114,7 +120,7 @@ const Styles = StyleSheet.create({
     fontWeight: '300',
     marginTop: '15%',
     marginBottom: '20%',
-    fontSize: 16, 
+    fontSize: 16,
   },
   genderImage: {
     width: 115,
@@ -124,8 +130,8 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fafafa',
     padding: 10,
-    borderRadius: 15
-  }, 
+    borderRadius: 15,
+  },
   radioImage: {
     flexDirection: 'row',
     justifyContent: 'center',
