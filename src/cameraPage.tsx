@@ -7,8 +7,30 @@ import {
   StyleSheet,
   StatusBar,
 } from 'react-native';
+import {useEffect} from 'react';
+import {
+  Camera,
+  useCameraDevice,
+  useCameraFormat,
+  useCameraPermission,
+} from 'react-native-vision-camera';
 
 const CameraPage = ({navigation}) => {
+  const {hasPermission, requestPermission} = useCameraPermission();
+
+  useEffect(() => {
+    if (!hasPermission) {
+      requestPermission();
+    }
+  }, [hasPermission]);
+
+  const device = useCameraDevice('back');
+  const format = useCameraFormat(device, [
+    {photoAspectRatio: 3 / 4},
+    {photoResolution: 'max'},
+    {autoFocusSystem: 'contrast-detection'},
+  ]);
+
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
       <StatusBar barStyle={'light-content'} backgroundColor={'#000000'} />
@@ -29,11 +51,18 @@ const CameraPage = ({navigation}) => {
         }}>
         <Text style={Styles.instruction}>Posisikan Tangan Kamu</Text>
       </View>
-      <View style={Styles.viewFinder}>
-        <View style={Styles.guideline} />
-
-      </View>
-      <TouchableOpacity style={Styles.shutterButton} onPress={() => {navigation.navigate('CheckPhotoPage')}}></TouchableOpacity>
+      <Camera
+        style={Styles.viewFinder}
+        device={device}
+        isActive={true}
+        format={format}
+        photo={true}
+      />
+      <TouchableOpacity
+        style={Styles.shutterButton}
+        onPress={() => {
+          navigation.navigate('CheckPhotoPage');
+        }}></TouchableOpacity>
     </View>
   );
 };
@@ -74,18 +103,18 @@ const Styles = StyleSheet.create({
     zIndex: 4,
   },
   viewFinder: {
-    backgroundColor: '#00b140',
+    width: '100%', 
     aspectRatio: 3 / 4,
-    justifyContent: 'center', 
+    justifyContent: 'center',
   },
   guideline: {
     zIndex: 3,
     width: 250,
     height: 250,
     alignSelf: 'center',
-    borderColor: '#cc3663', 
+    borderColor: '#cc3663',
     borderWidth: 5,
-    opacity: 0.7
+    opacity: 0.7,
   },
 });
 
