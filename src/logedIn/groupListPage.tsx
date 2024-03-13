@@ -58,7 +58,6 @@ const Styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     marginRight: 20,
-    // backgroundColor: 'red'
   },
   backIcon: {
     width: 20,

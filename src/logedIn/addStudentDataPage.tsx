@@ -95,7 +95,7 @@ const AddStudentDataPage = ({navigation}) => {
         <TouchableOpacity
           style={Styles.button}
           onPress={() => {
-            navigation.navigate('CameraPage');
+            navigation.navigate('ReminderPage');
           }}>
           <Text style={Styles.textButton}>lanjut ...</Text>
         </TouchableOpacity>

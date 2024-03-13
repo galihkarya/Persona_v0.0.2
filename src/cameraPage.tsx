@@ -33,7 +33,7 @@ const CameraPage = ({navigation}) => {
         <View style={Styles.guideline} />
 
       </View>
-      <TouchableOpacity style={Styles.shutterButton}></TouchableOpacity>
+      <TouchableOpacity style={Styles.shutterButton} onPress={() => {navigation.navigate('CheckPhotoPage')}}></TouchableOpacity>
     </View>
   );
 };

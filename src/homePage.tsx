@@ -143,7 +143,7 @@ const HomePage = ({navigation}) => {
       <TouchableOpacity
         style={Styles.button}
         onPress={() => {
-          navigation.navigate('CameraPage');
+          navigation.navigate('ReminderPage');
         }}>
         <Text style={Styles.textButton}>Mulai Prediksi</Text>
       </TouchableOpacity>

@@ -4,16 +4,17 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   HomePage,
   LoginPage,
-  HomePageLogedIn,
   GroupListPage,
-  ProfilePage,
   CameraPage,
   RegistName,
   RegistRole,
   RegistInstitutionBK,
   RegistInstitutionWK,
   RegistAccount,
-  AddStudentDataPage
+  AddStudentDataPage,
+  ReminderPage, 
+  CheckPhotoPage, 
+  ResultPage
 } from '..';
 
 import Tabs from './bottomBarNavigaton';
@@ -69,8 +70,23 @@ function Navigation() {
         options={{headerShown: false}}
       />
       <Stack.Screen
-      name="addStudentData"
+      name="AddStudentData"
       component={AddStudentDataPage}
+      options={{headerShown: false}}
+      />
+      <Stack.Screen
+      name="ReminderPage"
+      component={ReminderPage}
+      options={{headerShown: false}}
+      />
+      <Stack.Screen
+      name="CheckPhotoPage"
+      component={CheckPhotoPage}
+      options={{headerShown: false}}
+      />
+      <Stack.Screen
+      name="ResultPage"
+      component={ResultPage}
       options={{headerShown: false}}
       />
       <Stack.Screen name="BottomNav" component={Tabs} options={{headerShown: false}}/>

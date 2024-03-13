@@ -153,7 +153,7 @@ const HomePageLogedIn = ({navigation}) => {
         <TouchableOpacity
           style={Styles.button}
           onPress={() => {
-            navigation.navigate('addStudentData');
+            navigation.navigate('AddStudentData');
           }}>
           <Text style={Styles.textButton}>Mulai Prediksi</Text>
         </TouchableOpacity>

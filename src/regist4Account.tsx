@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import {
   View,
   Text,
@@ -10,6 +10,13 @@ import {
 } from 'react-native';
 
 const RegistAccount = ({navigation}) => {
+  const [text, setText] = useState('');
+  const [passwordVisible1, setPasswordVisible1] = useState(true);
+  const [passwordVisible2, setPasswordVisible2] = useState(true);
+
+  let visibleicon = require('../assets/icons/visibleicon.png');
+  let invisibleicon = require('../assets/icons/invisibleicon.png');
+
   return (
     <ScrollView>
       <TouchableOpacity
@@ -29,12 +36,45 @@ const RegistAccount = ({navigation}) => {
           source={require('../assets/icons/account.png')}
         />
         <Text style={Styles.head1}>Akun</Text>
-        <Text style={Styles.head2}>Masukkan username dan password yang bagus</Text>
+        <Text style={Styles.head2}>
+          Masukkan username dan password yang bagus
+        </Text>
       </View>
       <View style={{margin: 20}}>
-        <TextInput style={Styles.input} placeholder="username" />
-        <TextInput style={Styles.input} placeholder="password" />
-        <TextInput style={Styles.input} placeholder="ketik ulang password" />
+        <View style={Styles.input}>
+          <TextInput placeholder="username" />
+        </View>
+
+        <View style={Styles.input}>
+          <TextInput
+            secureTextEntry={passwordVisible1}
+            placeholder="password"
+            style={{flex: 1}}
+          />
+          <TouchableOpacity
+            onPress={() => setPasswordVisible1(!passwordVisible1)}>
+            <Image
+              style={Styles.visibleIcon}
+              source={passwordVisible1 ? invisibleicon : visibleicon}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View style={Styles.input}>
+          <TextInput
+            secureTextEntry={passwordVisible2}
+            placeholder="ketik ulang password"
+            style={{flex: 1}}
+          />
+          <TouchableOpacity
+            onPress={() => setPasswordVisible2(!passwordVisible2)}>
+            <Image
+              style={Styles.visibleIcon}
+              source={passwordVisible2 ? invisibleicon : visibleicon}
+            />
+          </TouchableOpacity>
+        </View>
+
         <TouchableOpacity
           style={Styles.button}
           onPress={() => {
@@ -70,8 +110,8 @@ const Styles = StyleSheet.create({
   },
   head2: {
     fontSize: 16,
-    maxWidth: 200, 
-    textAlign: 'center'
+    maxWidth: 200,
+    textAlign: 'center',
   },
   input: {
     backgroundColor: '#fefefe',
@@ -80,6 +120,8 @@ const Styles = StyleSheet.create({
     shadowColor: '#00000050',
     paddingHorizontal: 20,
     marginVertical: 8,
+    flexDirection: 'row',
+    alignItems: 'center', 
   },
   button: {
     backgroundColor: '#CC3663',
@@ -92,6 +134,11 @@ const Styles = StyleSheet.create({
     color: '#FFFFFF',
     paddingVertical: 15,
     fontSize: 16,
+  },
+  visibleIcon: {
+    width: 22,
+    height: 22,
+
   },
 });
 

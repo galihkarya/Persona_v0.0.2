@@ -12,7 +12,9 @@ import GroupListPage from './logedIn/groupListPage';
 import HomePageLogedIn from './logedIn/homePageLogedIn';
 import ProfilePage from './logedIn/profilePage';
 import ResultListPage from './logedIn/resultListPage';
-import ResultPage from './logedIn/resultPage';
+import ReminderPage from './reminderPage';
+import ResultPage from './resultPage';
+import CheckPhotoPage from './checkPhotoPage';
 
 export {
   CameraPage,
@@ -30,4 +32,6 @@ export {
   ProfilePage,
   ResultListPage,
   ResultPage,
+  ReminderPage, 
+  CheckPhotoPage, 
 };
