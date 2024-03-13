@@ -5,7 +5,7 @@ const CheckPhotoPage = ({navigation}) => {
   return (
     <View style={{backgroundColor: 'black', flex: 1}}>
       <View style={{height: 80}} />
-      <View style={Styles.viewFinder} />
+      <Image source={{uri: photo.path}} style={Styles.viewFinder} />
       <View
         style={{
           position: 'absolute',
@@ -58,12 +58,5 @@ const CheckPhotoPage = ({navigation}) => {
     </View>
   );
 };
-
-const Styles = StyleSheet.create({
-  viewFinder: {
-    backgroundColor: '#00b140',
-    aspectRatio: 3 / 4,
-  },
-});
 
 export default CheckPhotoPage;
